@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit;
 public class T4_SimpleDropdowns {
 
     WebDriver driver;
-
     @BeforeMethod
     public void setupMethod(){
 
@@ -45,10 +44,5 @@ public class T4_SimpleDropdowns {
         String expectedStateSelectionText = "Select a State";
         String actualStateSelectionText = stateSelectionText.getFirstSelectedOption().getText();
         Assert.assertEquals(actualStateSelectionText, expectedStateSelectionText, "Text failed");
-
-
     }
-
-
-
 }
