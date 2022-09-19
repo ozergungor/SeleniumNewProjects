@@ -1,5 +1,6 @@
 package com.cydeo.tests.day07_webtables_utilities_javafaker;
 
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class T1_WindowHandling {
+
 
     public WebDriver driver;
 
@@ -34,23 +36,10 @@ public class T1_WindowHandling {
         ((JavascriptExecutor) driver).executeScript("window.open('https://etsy.com','_blank');");
         ((JavascriptExecutor) driver).executeScript("window.open('https://facebook.com','_blank');");
 
-        //4. Create a logic to switch to the tab where Etsy.com is open
-        Set<String> allWindowsHandles = driver.getWindowHandles();
 
-        for (String each : allWindowsHandles) {
+        // 4. Create a logic to switch to the tab where expectedInURL is open
 
-            driver.switchTo().window(each);
-            System.out.println("Current URL : " + driver.getCurrentUrl());
+        BrowserUtils.switchWindowAndVerify(driver, "etsy", "Etsy");
 
-            if(driver.getCurrentUrl().contains("etsy")){
-                break;
-            }else{
-            }
-        }
-        //5. Assert: Title contains “Etsy”
-        String expectedInTitle = "Etsy";
-        String actualTitle = driver.getTitle();
-        Assert.assertTrue(driver.getTitle().contains("Etsy"));
-        Assert.assertTrue(actualTitle.contains(expectedInTitle));
     }
 }

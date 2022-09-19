@@ -24,7 +24,7 @@ public class T3_RadioButton_cont {
         //3. Click to “Hockey” radio button
         //4. Verify “Hockey” radio button is selected after clicking
     }
-    private static void clickAndVerifyRadioButton(WebDriver driver, String nameAttribute, String idValue){
+    public static void clickAndVerifyRadioButton(WebDriver driver, String nameAttribute, String idValue){
 
         List<WebElement> radioButtons = driver.findElements(By.name(nameAttribute));
 
