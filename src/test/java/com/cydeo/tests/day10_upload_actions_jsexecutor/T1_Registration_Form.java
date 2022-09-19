@@ -6,10 +6,9 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-
 public class T1_Registration_Form {
-
     @Test
     public void registration_form_test(){
 
@@ -18,7 +17,6 @@ public class T1_Registration_Form {
         //1. Open browser
         //2. Go to website: https://practice.cydeo.com/registration_form
         Driver.getDriver().get(ConfigurationReader.getProperty("registration.form.url"));
-
 
         //3. Enter first name
         Faker faker = new Faker();
@@ -70,15 +68,8 @@ public class T1_Registration_Form {
         WebElement click_Signup_Button = Driver.getDriver().findElement(By.xpath("//button[@id='wooden_spoon']"));
         click_Signup_Button.click();
 
-        //15.Verify success message “You’ve successfully completed registration.” is displayed.
-
-        //Note:
-        //1. Use new Driver utility class and method
-        //2. User JavaFaker when possible
-        //3. User ConfigurationReader when it makes sense
-
-
-
-
+        //15.Verify success message “You’ve successfully completed registration!” is displayed.
+        WebElement textWritten = Driver.getDriver().findElement(By.tagName("p"));
+        Assert.assertTrue(textWritten.isDisplayed());
     }
 }
